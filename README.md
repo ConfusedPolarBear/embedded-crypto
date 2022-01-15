@@ -1,10 +1,10 @@
 
-Arduino Cryptography Library
+Embedded Cryptography Library
 ============================
 
 This distribution contains a libraries and example applications to perform
-cryptography operations on Arduino devices.  They are distributed under the
-terms of the MIT license.
+cryptography operations on embedded devices.  They are distributed under
+the terms of the MIT license.
 
 The [documentation](http://rweather.github.io/arduinolibs/crypto.html)
 contains more information on the libraries and examples.
