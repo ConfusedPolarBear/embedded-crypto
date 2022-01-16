@@ -1,23 +1,24 @@
-
 Embedded Cryptography Library
-============================
+=============================
 
-This distribution contains a libraries and example applications to perform
-cryptography operations on embedded devices.  They are distributed under
-the terms of the MIT license.
+This repository contains cryptographic algorithms for the ESP8266 and ESP32.
 
 The [documentation](http://rweather.github.io/arduinolibs/crypto.html)
 contains more information on the libraries and examples.
 
-This repository used to contain a number of other examples and libraries
-for other areas of Arduino functionality but most users are only interested
-in the cryptography code.  The other projects have been moved to a
-separate [repository](https://github.com/rweather/arduino-projects) and
-only the cryptography code remains in this repository.
+This library was [originally created](https://github.com/rweather/arduinolibs)
+by Rhys Weatherley.
 
-For more information on these libraries, to report bugs, or to suggest
-improvements, please contact the author Rhys Weatherley via
-[email](mailto:rhys.weatherley@gmail.com).
+Changes in this fork
+--------------------
+
+* Support for the following has been removed:
+  * AES
+  * OMAC
+  * SHA224
+  * SHA3
+  * SHA384
+* The RNG code has been significantly simplified
 
 Recent significant changes to the library
 -----------------------------------------

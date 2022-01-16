@@ -34,6 +34,7 @@ public:
     RNGClass();
     ~RNGClass();
 
+    /// Returns random data. The Wi-Fi radio *must* have been activated before calling this function!
     void rand(uint8_t *data, size_t len);
 };
 
