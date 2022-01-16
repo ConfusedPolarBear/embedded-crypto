@@ -139,8 +139,6 @@
  */
 RNGClass RNG;
 
-this should cause an error!
-
 /**
  * \brief Constructs a new random number generator instance.
  *
