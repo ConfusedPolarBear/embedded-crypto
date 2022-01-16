@@ -15,7 +15,7 @@
         }
     ],
     "export": {
-      "include": "libraries/Crypto"
+      "include": "src"
     },
     "frameworks": "espressif8266,espressif32",
     "platforms": "*"
