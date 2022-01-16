@@ -34,39 +34,7 @@ public:
     RNGClass();
     ~RNGClass();
 
-    void begin(const char *tag);
-    void addNoiseSource(NoiseSource &source);
-
-    void setAutoSaveTime(uint16_t minutes);
-
     void rand(uint8_t *data, size_t len);
-    bool available(size_t len) const;
-
-    void stir(const uint8_t *data, size_t len, unsigned int credit = 0);
-
-    void save();
-
-    void loop();
-
-    void destroy();
-
-    static const int SEED_SIZE = 48;
-
-private:
-    uint32_t block[16];
-    uint32_t stream[16];
-    uint16_t credits : 13;
-    uint16_t firstSave : 1;
-    uint16_t initialized : 1;
-    uint16_t trngPending : 1;
-    unsigned long timer;
-    unsigned long timeout;
-    NoiseSource *noiseSources[4];
-    uint8_t count;
-    uint8_t trngPosn;
-
-    void rekey();
-    void mixTRNG();
 };
 
 extern RNGClass RNG;

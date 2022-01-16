@@ -17,11 +17,6 @@
     "export": {
       "include": "libraries/Crypto"
     },
-    "repository":
-    {
-        "type": "git",
-        "url": "https://github.com/ConfusedPolarBear/embedded-crypto.git"
-    },
     "frameworks": "espressif8266,espressif32",
     "platforms": "*"
 }
