@@ -33,7 +33,7 @@ public:
     static bool eval(uint8_t result[32], const uint8_t s[32], const uint8_t x[32]);
 
     static void dh1(uint8_t k[32], uint8_t f[32]);
-    static bool dh2(uint8_t k[32], uint8_t f[32]);
+    static bool dh2(uint8_t k[32], const uint8_t f[32]);
 
 #if defined(TEST_CURVE25519_FIELD_OPS)
 public:
