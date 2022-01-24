@@ -1,7 +1,19 @@
 {
     "name": "Crypto",
     "version": "10.0.0",
-    "keywords": "ChaCha,ChaChaPoly,SHA256,SHA512,BLAKE2s,BLAKE2b,Poly1305,Curve25519,Ed25519,P521,RNG",
+    "keywords": [
+        "BLAKE2b",
+        "BLAKE2s",
+        "ChaCha",
+        "ChaChaPoly",
+        "Crypto",
+        "Curve25519",
+        "Ed25519",
+        "Poly1305",
+        "RNG",
+        "SHA256",
+        "SHA512"
+    ],
     "description": "Embedded cryptography library - forked from Rhys Weatherley's Arduino Crypto library",
     "authors":
     [
@@ -15,8 +27,10 @@
         }
     ],
     "export": {
-      "include": "src"
+      "include": "src/*"
     },
-    "frameworks": "espressif8266,espressif32",
-    "platforms": "*"
+    "platforms": [
+        "espressif8266",
+        "espressif32"
+    ]
 }
