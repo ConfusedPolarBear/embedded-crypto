@@ -349,6 +349,10 @@ uint8_t Curve25519::isWeakPoint(const uint8_t k[32])
     return result;
 }
 
+bool Curve25519::isPublicKeyValid(const uint8_t k[32]) {
+    return isWeakPoint(k) == 0;
+}
+
 /**
  * \brief Reduces a number modulo 2^255 - 19.
  *
