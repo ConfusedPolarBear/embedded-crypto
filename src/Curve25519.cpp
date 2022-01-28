@@ -242,27 +242,27 @@ bool Curve25519::eval(uint8_t result[32], const uint8_t s[32], const uint8_t x[3
  *
  * \sa dh2()
  */
-void Curve25519::dh1(uint8_t k[32], uint8_t f[32])
+void Curve25519::dh1(uint8_t publicKey[32], uint8_t secretKey[32])
 {
     do {
-        // Generate a random "f" value and then adjust the value to make
+        // Generate a random secret key value and then adjust the value to make
         // it valid as an "s" value for eval().  According to the specification
-        // we need to mask off the 3 right-most bits of f[0], mask off the
-        // left-most bit of f[31], and set the second to left-most bit of f[31].
-        RNG.rand(f, 32);
-        f[0] &= 0xF8;
-        f[31] = (f[31] & 0x7F) | 0x40;
+        // we need to mask off the 3 right-most bits of secretKey[0], mask off the
+        // left-most bit of secretKey[31], and set the second to left-most bit of secretKey[31].
+        RNG.rand(secretKey, 32);
+        secretKey[0] &= 0xF8;
+        secretKey[31] = (secretKey[31] & 0x7F) | 0x40;
 
-        // Evaluate the curve function: k = Curve25519::eval(f, 9).
+        // Evaluate the curve function: publicKey = Curve25519::eval(secretKey, 9).
         // We pass NULL to eval() to indicate the value 9.  There is no
         // need to check the return value from eval() because we know
         // that 9 is a valid field element.
-        eval(k, f, 0);
+        eval(publicKey, secretKey, 0);
 
-        // If "k" is weak for contributory behaviour then reject it,
-        // generate another "f" value, and try again.  This case is
+        // If publicKey is weak for contributory behaviour then reject it,
+        // generate another secretKey value, and try again.  This case is
         // highly unlikely but we still perform the check just in case.
-    } while (isWeakPoint(k));
+    } while (isWeakPoint(publicKey));
 }
 
 /**
@@ -349,8 +349,18 @@ uint8_t Curve25519::isWeakPoint(const uint8_t k[32])
     return result;
 }
 
-bool Curve25519::isPublicKeyValid(const uint8_t k[32]) {
-    return isWeakPoint(k) == 0;
+// Converts the provided secret key to a public key. If the public key is found to be
+// weak, clears the public key and returns false.
+bool Curve25519::secretToPublicKey(const uint8_t secretKey[32], uint8_t publicKey[32]) {
+    auto properMember = eval(publicKey, secretKey, 0);
+    auto isWeak = isWeakPoint(publicKey);
+
+    if (!properMember || isWeak) {
+        clean(publicKey, 32);
+        return false;
+    }
+
+    return true;
 }
 
 /**
